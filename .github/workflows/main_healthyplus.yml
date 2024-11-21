@@ -29,7 +29,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: |
+            ${{ github.workspace }}/api-gateway/target/*.jar
+            ${{ github.workspace }}/discovery-server/target/*.jar
+            ${{ github.workspace }}/iotdevice-service/target/*.jar
+            ${{ github.workspace }}/measurement-service/target/*.jar
+            ${{ github.workspace }}/patient-service/target/*.jar
+            ${{ github.workspace }}/user-service/target/*.jar
 
   deploy:
     runs-on: windows-latest
