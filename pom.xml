@@ -43,6 +43,7 @@
 		<module>patient-service</module>
 		<module>measurement-service</module>
 		<module>iotdevice-service</module>
+		<module>discovery-server</module>
 	</modules>
 
 	<build>
