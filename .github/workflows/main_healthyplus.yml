@@ -25,6 +25,21 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
+      - name: List generated files
+        run: |
+          echo "Listing files in api-gateway target"
+          dir ${{ github.workspace }}/api-gateway/target
+          echo "Listing files in discovery-server target"
+          dir ${{ github.workspace }}/discovery-server/target
+          echo "Listing files in iotdevice-service target"
+          dir ${{ github.workspace }}/iotdevice-service/target
+          echo "Listing files in measurement-service target"
+          dir ${{ github.workspace }}/measurement-service/target
+          echo "Listing files in patient-service target"
+          dir ${{ github.workspace }}/patient-service/target
+          echo "Listing files in user-service target"
+          dir ${{ github.workspace }}/user-service/target
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
