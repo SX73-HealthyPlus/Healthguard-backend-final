@@ -74,11 +74,50 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_65D1D6FA00CF478B9893488A3B2A466C }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_70804268E6A3410FA8CE427D160F5948 }}
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
+      - name: Deploy api-gateway to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'HealthyPlus'
+          app-name: 'HealthyPlus-api-gateway'
           slot-name: 'Production'
-          package: '*.jar'
+          package: '${{ github.workspace }}/java-app/api-gateway-1.0.0-SNAPSHOT.jar'
+
+      # Deploy discovery-server
+      - name: Deploy discovery-server to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'HealthyPlus-discovery-server'
+          slot-name: 'Production'
+          package: '${{ github.workspace }}/java-app/discovery-server-1.0.0-SNAPSHOT.jar'
+
+      # Deploy iotdevice-service
+      - name: Deploy iotdevice-service to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'HealthyPlus-iotdevice-service'
+          slot-name: 'Production'
+          package: '${{ github.workspace }}/java-app/iotdevice-service-1.0.0-SNAPSHOT.jar'
+
+      # Deploy measurement-service
+      - name: Deploy measurement-service to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'HealthyPlus-measurement-service'
+          slot-name: 'Production'
+          package: '${{ github.workspace }}/java-app/measurement-service-1.0.0-SNAPSHOT.jar'
+
+      # Deploy patient-service
+      - name: Deploy patient-service to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'HealthyPlus-patient-service'
+          slot-name: 'Production'
+          package: '${{ github.workspace }}/java-app/patient-service-1.0.0-SNAPSHOT.jar'
+
+      # Deploy user-service
+      - name: Deploy user-service to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'HealthyPlus-user-service'
+          slot-name: 'Production'
+          package: '${{ github.workspace }}/java-app/user-service-1.0.0-SNAPSHOT.jar'
           
